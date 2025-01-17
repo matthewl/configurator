@@ -1,0 +1,40 @@
+name: Merge JSON Files
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  merge-json:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout the repository
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # Step 2: Set up Node.js
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+
+    # Step 3: Install dependencies (if any)
+    - name: Install dependencies
+      run: npm install lodash
+
+    # Step 4: Run the JSON merge script
+    - name: Merge JSON Files
+      run: node merge-json-files.js
+
+    # Step 5: Commit and push changes
+    - name: Commit and push changes
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+        git add merged.json
+        git commit -m "Automated JSON merge"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
