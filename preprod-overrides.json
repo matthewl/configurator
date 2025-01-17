@@ -1,33 +1,33 @@
 {
   "application": {
-    "environment": "preprod",
+    "environment": "preprod"
   },
   "server": {
     "ssl": {
       "certificate_path": "/etc/ssl/certs/preprod.crt",
       "key_path": "/etc/ssl/private/preprod.key"
-    },
+    }
   },
   "database": {
     "host": "preprod.example.com",
-    "database_name": "mockapp_preprod",
+    "database_name": "mockapp_preprod"
   },
   "logging": {
     "file": {
-      "path": "/var/log/mockapp/preprod.log",
-    },
+      "path": "/var/log/mockapp/preprod.log"
+    }
   },
   "features": {
     "caching": {
       "redis": {
-        "host": "preprod.example.com",
+        "host": "preprod.example.com"
       }
     }
   },
   "security": {
     "authentication": {
       "jwt": {
-        "secret_key": "preprod_secret_key",
+        "secret_key": "preprod_secret_key"
       }
     }
   }
