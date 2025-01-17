@@ -26,7 +26,7 @@ jobs:
 
     # Step 4: Run the JSON merge script
     - name: Merge JSON Files
-      run: node merge-json-files.js
+      run: node merge-config-files.js
 
     # Step 5: Commit and push changes
     - name: Commit and push changes
