@@ -1,0 +1,32 @@
+{
+  "application": {
+    "environment": "qa"
+  },
+  "server": {
+    "ssl": {
+      "certificate_path": "/etc/ssl/certs/qa.crt",
+      "key_path": "/etc/ssl/private/qa.key"
+    }
+  },
+  "database": {
+    "host": "qa.example.com"
+  },
+  "logging": {
+    "file": {
+      "path": "/var/log/mockapp/qa.log"
+    }
+  },
+  "features": {
+    "beta_access": true,
+    "caching": {
+      "enabled": false
+    }
+  },
+  "security": {
+    "authentication": {
+      "jwt": {
+        "secret_key": "qa_secret_key"
+      }
+    }
+  }
+}
