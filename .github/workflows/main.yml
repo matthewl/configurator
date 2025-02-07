@@ -35,7 +35,8 @@ jobs:
         git config --global user.email "actions@github.com"
 
         # Stage changes
-        git add -A
+        git add preprod.json
+        git add qa.json
 
         # Check if there are changes to commit
         if git diff --cached --quiet; then
