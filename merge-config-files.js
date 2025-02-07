@@ -15,6 +15,9 @@ fs.writeFileSync("preprod.json", JSON.stringify(mergedPreProdConfig, null, 2));
 const preProdConfig = JSON.parse(fs.readFileSync("preprod.json", "utf-8"));
 const qaOverrides = JSON.parse(fs.readFileSync("qa-overrides.json", "utf-8"));
 
+console.log("PreProd Config:", preProdConfig);
+console.log("QA Overrides:", qaOverrides);
+
 // Deep merge JSON files
 const mergedQaConfig = _.merge({}, preProdConfig, qaOverrides);
 
