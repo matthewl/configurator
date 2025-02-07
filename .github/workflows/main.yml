@@ -34,16 +34,15 @@ jobs:
         git config --global user.name "GitHub Actions"
         git config --global user.email "actions@github.com"
 
+        # Stage changes
+        git add preprod.json qa.json
+
         # Check if there are changes to commit
         if git diff --cached --quiet; then
           echo "No changes to commit. Exiting."
           exit 0
         fi
-        
-        # Stage changes
-        git add preprod.json
-        git add qa.json
-        
+
         git commit -m "Automated JSON merge"
         git push
       env:
