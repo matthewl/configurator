@@ -23,7 +23,7 @@ try {
   // Deep merge JSON files
   const mergedQaConfig = _.merge({}, preProdConfig, qaOverrides);
 
-  console.log("QA Config:", mergedQAConfig);
+  console.log("QA Config:", mergedQaConfig);
 
   // Save the merged JSON
   fs.writeFileSync("qa.json", JSON.stringify(mergedQaConfig, null, 2));
