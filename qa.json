@@ -1,1 +1,96 @@
-{}
+{
+  "application": {
+    "name": "MockApp",
+    "environment": "qa",
+    "version": "1.0.0",
+    "maintenance_mode": false
+  },
+  "server": {
+    "host": "0.0.0.0",
+    "port": 8080,
+    "ssl": {
+      "enabled": true,
+      "certificate_path": "/etc/ssl/certs/qa.crt",
+      "key_path": "/etc/ssl/private/qa.key"
+    },
+    "timeout": {
+      "read": 30,
+      "write": 30,
+      "idle": 60
+    }
+  },
+  "database": {
+    "type": "postgresql",
+    "host": "qa.example.com",
+    "port": 5432,
+    "username": "mockapp_user",
+    "password": "secure_password",
+    "database_name": "mockapp_preprod",
+    "connection_pool": {
+      "max": 20,
+      "min": 5,
+      "idle_timeout": 300
+    }
+  },
+  "logging": {
+    "level": "info",
+    "file": {
+      "enabled": true,
+      "path": "/var/log/mockapp/qa.log",
+      "max_size_mb": 100,
+      "max_files": 10
+    },
+    "console": {
+      "enabled": true,
+      "format": "json"
+    }
+  },
+  "features": {
+    "beta_access": true,
+    "max_concurrent_users": 1000,
+    "api_rate_limit": {
+      "enabled": true,
+      "requests_per_minute": 500
+    },
+    "caching": {
+      "enabled": false,
+      "ttl_seconds": 3600,
+      "backend": "redis",
+      "redis": {
+        "host": "preprod.example.com",
+        "port": 6379
+      }
+    }
+  },
+  "security": {
+    "cors": {
+      "allowed_origins": [
+        "https://example.com",
+        "https://api.example.com"
+      ],
+      "allowed_methods": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ],
+      "allowed_headers": [
+        "Authorization",
+        "Content-Type"
+      ]
+    },
+    "authentication": {
+      "jwt": {
+        "secret_key": "qa_secret_key",
+        "expiry_seconds": 86400
+      },
+      "oauth_providers": {
+        "google": {
+          "client_id": "google-client-id",
+          "client_secret": "google-client-secret",
+          "redirect_uri": "https://example.com/oauth/google"
+        }
+      }
+    }
+  }
+}
