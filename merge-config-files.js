@@ -29,6 +29,14 @@ try {
   fs.writeFileSync("qa.json", JSON.stringify(mergedQaConfig, null, 2));
   console.log("qa.json generated successfully!");
 
+  // Verify the changes
+  const writtenQaConfig = JSON.parse(fs.readFileSync("qa.json", "utf-8"));
+  if (_.isEqual(mergedQaConfig, writtenQaConfig)) {
+    console.log("qa.json has been updated correctly!");
+  } else {
+    console.log("qa.json update verification failed!");
+  }
+
 } catch (error) {
   console.error("An error occurred:", error);
 }
